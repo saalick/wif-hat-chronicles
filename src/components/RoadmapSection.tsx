@@ -18,36 +18,36 @@ interface Phase {
 const phases: Phase[] = [
   {
     id: 1,
-    title: "Original Hat Genesis",
+    title: "OG Hat Genesis 🎩✨",
     date: "December 26, 2018",
-    description: "Owners of Achi posted the iconic \"Red Hat\" photo on Instagram, marking the first historical dogwifhat meme. The pink hat photo followed as the second post.",
+    description: "The legendary moment when Achi's owners dropped the ICONIC red hat pic on Insta 📸. This wasn't just a photo - it was the birth of a MEME EMPIRE! The pink hat follow-up? *Chef's kiss* 💋👌",
     status: "complete"
   },
   {
     id: 2,
-    title: "Launch of the Original Wif Hat Token",
-    date: "2024 Pump.fun token launch; UnBonded until August 10, 2025 at 21:21",
-    description: "The $OWIF token was launched on the Solana blockchain via Pump.fun and successfully bonded and migrated to its current state.",
+    title: "Token Go Brrrr 🚀💰",
+    date: "2024 Pump.fun launch → UnBonded Aug 10, 2025 at 21:21",
+    description: "$OWIF hit the Solana blockchain via Pump.fun and said 'YEET!' 🎯 Successfully bonded and migrated like a TRUE CHAD. No rugs here, only DIAMOND HANDS! 💎🙌",
     status: "complete"
   },
   {
     id: 3,
-    title: "Growth & Community Mobilization",
-    description: "Redistribution of wallets to committed \"Diamond Handed\" holders. Access Pumpfun Creator rewards for CTO. Deploy influencers on Timeline. Solidify a core community. Create engaging content to drive growth.",
+    title: "Diamond Hands Assembly 💎🤝",
+    description: "Redistributing bags to the REAL ONES - no paper hands allowed! 📄🚫 Accessing those sweet Pumpfun Creator rewards, deploying alpha influencers, and building an UNSTOPPABLE community. LFG! 🦍💪",
     status: "in-progress",
     progress: 88
   },
   {
     id: 4,
-    title: "Visibility of Legendary Status",
-    description: "Update listings on Dexscreener & Dextools. Achieve whitelisting on Jupiter. Secure listings on CoinGecko & CoinMarketCap. Establish dominance on social media.",
+    title: "Legendary Status Unlocked 🏆👑",
+    description: "Getting listed EVERYWHERE! Dexscreener? ✅ Dextools? ✅ Jupiter whitelist? Soon™️ CoinGecko & CMC incoming! 🦎📊 Social media domination mode: ACTIVATED! 📱⚡",
     status: "in-progress",
     progress: 44
   },
   {
     id: 5,
-    title: "Market Domination",
-    description: "Surpass Dogwifcoin's market cap. Form strategic partnerships. Run marketing campaigns, contests, and community giveaways. Secure listings on centralized exchanges (CEXs).",
+    title: "Moon Mission & Beyond 🌙🚀",
+    description: "Flipping Dogwifcoin's market cap like it's nothing! 📈💥 Strategic partnerships with other GIGACHADS, epic marketing campaigns, community giveaways, and CEX listings. TO THE MOON AND BEYOND! 🌌👨‍🚀",
     status: "upcoming"
   }
 ];
@@ -67,20 +67,20 @@ const StatusBadge = ({ status, progress }: { status: Phase['status']; progress?:
   switch (status) {
     case 'complete':
       return (
-        <Badge className="bg-neon-green/20 text-neon-green border-neon-green/30 font-bold">
-          ✅ Complete
+        <Badge className="bg-neon-green/20 text-neon-green border-neon-green/30 font-bold animate-pulse">
+          ✅ REKT ✅
         </Badge>
       );
     case 'in-progress':
       return (
         <Badge className="bg-neon-purple/20 text-neon-purple border-neon-purple/30 font-bold">
-          🟣 {progress}% Complete
+          🔥 {progress}% LFG 🔥
         </Badge>
       );
     default:
       return (
-        <Badge className="bg-neon-blue/20 text-neon-blue border-neon-blue/30 font-bold">
-          🔥 In Progress
+        <Badge className="bg-neon-blue/20 text-neon-blue border-neon-blue/30 font-bold animate-bounce">
+          🚀 SOON™️ 🚀
         </Badge>
       );
   }
@@ -137,8 +137,8 @@ const PhaseCard = ({ phase, index }: { phase: Phase; index: number }) => {
             {phase.progress && (
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Progress</span>
-                  <span className="text-neon-purple font-bold">{phase.progress}%</span>
+                  <span className="text-muted-foreground">Diamond Hand Progress 💎</span>
+                  <span className="text-neon-purple font-bold">{phase.progress}% LFG!</span>
                 </div>
                 <Progress 
                   value={isVisible ? phase.progress : 0} 
@@ -201,11 +201,12 @@ export const RoadmapSection = () => {
           }`}
         >
           <h1 className="text-5xl md:text-7xl font-bold text-gradient mb-6 tracking-tight">
-            The Original Wif Hat
+            THE ORIGINAL WIF HAT
           </h1>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">ROADMAP</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-bounce">🗺️ ROADMAP 🗺️</h2>
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-            A symbol of enduring legacy & memetic history.
+            A symbol of enduring legacy & memetic history. <br/>
+            <span className="text-neon-pink font-bold">We're not just hodling - we're DIAMOND HANDING the culture! 💎🙌</span>
           </p>
           
           {/* Dog and Hat Images */}
@@ -213,13 +214,13 @@ export const RoadmapSection = () => {
             <div className="absolute inset-0 neon-glow rounded-full animate-glow"></div>
             <img 
               src={dogImage} 
-              alt="Original Wif Dog" 
-              className="w-full h-full object-contain relative z-10"
+              alt="Original Wif Dog - The OG Good Boy" 
+              className="w-full h-full object-contain relative z-10 hover:scale-110 transition-transform duration-500"
             />
             <img 
               src={hatImage} 
-              alt="Original Wif Hat" 
-              className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-32 object-contain animate-float z-20"
+              alt="Original Wif Hat - The Crown Jewel" 
+              className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-32 object-contain animate-float z-20 hover:animate-spin"
             />
           </div>
         </div>
@@ -232,12 +233,12 @@ export const RoadmapSection = () => {
         </div>
 
         {/* Disclaimer */}
-        <Card className="card-glow p-6 text-center">
+        <Card className="card-glow p-6 text-center border-2 border-neon-pink/30">
           <p className="text-sm text-muted-foreground leading-relaxed">
-            <span className="text-neon-blue font-bold">The Original Wif Hat Came 1st</span> & remains a Symbol of Enduring Legacy. 
-            While others may auction their hats, we hold fast to the True Legacy of dogwifhat memetics. 
-            <span className="text-destructive font-medium"> None of this should be considered financial advice.</span> 
-            Cryptocurrency memecoins are high risk — users should research before purchasing.
+            <span className="text-neon-blue font-bold text-lg">🚨 THE ORIGINAL WIF HAT CAME 1ST 🚨</span> <br/>
+            We remain the Symbol of Enduring Legacy! While others auction their hats, we HODL the True Legacy of dogwifhat memetics. 🎩💎<br/>
+            <span className="text-destructive font-bold animate-pulse">⚠️ NFA - NOT FINANCIAL ADVICE ⚠️</span> <br/>
+            Crypto memecoins = high risk, high reward. DYOR before you send it! 🚀📈💀
           </p>
         </Card>
       </div>

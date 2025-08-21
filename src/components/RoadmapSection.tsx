@@ -10,7 +10,7 @@ interface Phase {
   id: number;
   title: string;
   date?: string;
-  description: string;
+  description: string[];
   status: 'complete' | 'in-progress' | 'upcoming';
   progress?: number;
   color: string;
@@ -21,7 +21,12 @@ const phases: Phase[] = [
     id: 1,
     title: "OG Hat Genesis 🎩✨",
     date: "December 26, 2018",
-    description: "The legendary moment when Achi's owners dropped the ICONIC red hat pic on Insta 📸. This wasn't just a photo - it was the birth of a MEME EMPIRE! The pink hat follow-up? *Chef's kiss* 💋👌",
+    description: [
+      "📸 Achi's owners dropped the ICONIC red hat pic on Instagram",
+      "🏆 First historical dogwifhat meme was born - THE GENESIS!",
+      "💋 Pink hat photo followed as the legendary second post",
+      "🎭 Birth of a MEME EMPIRE that changed everything!"
+    ],
     status: "complete",
     color: "fun-green"
   },
@@ -29,14 +34,26 @@ const phases: Phase[] = [
     id: 2,
     title: "Token Go Brrrr 🚀💰",
     date: "2024 Pump.fun launch → UnBonded Aug 10, 2025 at 21:21",
-    description: "$OWIF hit the Solana blockchain via Pump.fun and said 'YEET!' 🎯 Successfully bonded and migrated like a TRUE CHAD. No rugs here, only DIAMOND HANDS! 💎🙌",
+    description: [
+      "🎯 $OWIF launched on Solana blockchain via Pump.fun",
+      "💎 Successfully bonded and migrated like a TRUE CHAD",
+      "🚫 No rugs here - only DIAMOND HANDS allowed!",
+      "⚡ YEET'd straight to the moon with style!"
+    ],
     status: "complete",
     color: "fun-blue"
   },
   {
     id: 3,
     title: "Diamond Hands Assembly 💎🤝",
-    description: "Redistributing bags to the REAL ONES - no paper hands allowed! 📄🚫 Accessing those sweet Pumpfun Creator rewards, deploying alpha influencers, and building an UNSTOPPABLE community. LFG! 🦍💪",
+    description: [
+      "🦍 Redistributing bags to the REAL ONES only",
+      "📄🚫 No paper hands allowed in this community!",
+      "💰 Accessing sweet Pumpfun Creator rewards for CTO",
+      "📱 Deploying alpha influencers across timelines",
+      "🏗️ Building an UNSTOPPABLE diamond-handed community",
+      "🎯 Creating engaging content to drive explosive growth"
+    ],
     status: "in-progress",
     progress: 88,
     color: "fun-purple"
@@ -44,7 +61,14 @@ const phases: Phase[] = [
   {
     id: 4,
     title: "Legendary Status Unlocked 🏆👑",
-    description: "Getting listed EVERYWHERE! Dexscreener? ✅ Dextools? ✅ Jupiter whitelist? Soon™️ CoinGecko & CMC incoming! 🦎📊 Social media domination mode: ACTIVATED! 📱⚡",
+    description: [
+      "📊 Update listings on Dexscreener & Dextools ✅",
+      "🚀 Achieve whitelisting on Jupiter - Soon™️",
+      "🦎 Secure listings on CoinGecko & CoinMarketCap",
+      "📱 Establish absolute dominance on social media",
+      "⚡ Social media domination mode: ACTIVATED!",
+      "🌟 Becoming the legendary status we always were!"
+    ],
     status: "in-progress",
     progress: 44,
     color: "fun-orange"
@@ -52,7 +76,14 @@ const phases: Phase[] = [
   {
     id: 5,
     title: "Moon Mission & Beyond 🌙🚀",
-    description: "Flipping Dogwifcoin's market cap like it's nothing! 📈💥 Strategic partnerships with other GIGACHADS, epic marketing campaigns, community giveaways, and CEX listings. TO THE MOON AND BEYOND! 🌌👨‍🚀",
+    description: [
+      "📈💥 Flip Dogwifcoin's market cap like it's nothing!",
+      "🤝 Form strategic partnerships with other GIGACHADS",
+      "🎉 Run epic marketing campaigns and contests",
+      "🎁 Launch community giveaways for the diamond hands",
+      "🏦 Secure listings on major centralized exchanges (CEXs)",
+      "🌌👨‍🚀 TO THE MOON AND BEYOND - no limits!"
+    ],
     status: "upcoming",
     color: "fun-pink"
   }
@@ -144,9 +175,16 @@ const PhaseCard = ({ phase, index }: { phase: Phase; index: number }) => {
               )}
             </div>
             
-            <p className="text-foreground leading-relaxed text-sm sm:text-base lg:text-lg font-casual">
-              {phase.description}
-            </p>
+            <div className="space-y-3">
+              <ul className="space-y-2">
+                {phase.description.map((point, pointIndex) => (
+                  <li key={pointIndex} className="flex items-start gap-3 text-foreground leading-relaxed text-sm sm:text-base lg:text-lg font-casual">
+                    <span className={`text-${phase.color} flex-shrink-0 mt-1`}>•</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
             
             {phase.progress && (
               <div className="space-y-2 sm:space-y-3">

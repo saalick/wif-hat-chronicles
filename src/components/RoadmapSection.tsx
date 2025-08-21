@@ -61,16 +61,16 @@ const phases: Phase[] = [
 const StatusIcon = ({ status }: { status: Phase['status'] }) => {
   switch (status) {
     case 'complete':
-      return <Star className="w-8 h-8 text-fun-green animate-spin" fill="currentColor" />;
+      return <Star className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-fun-green animate-spin" fill="currentColor" />;
     case 'in-progress':
-      return <Zap className="w-8 h-8 text-fun-pink animate-bounce" fill="currentColor" />;
+      return <Zap className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-fun-pink animate-bounce" fill="currentColor" />;
     default:
-      return <Heart className="w-8 h-8 text-fun-blue animate-pulse" fill="currentColor" />;
+      return <Heart className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-fun-blue animate-pulse" fill="currentColor" />;
   }
 };
 
 const StatusBadge = ({ status, progress, color }: { status: Phase['status']; progress?: number; color: string }) => {
-  const baseClasses = `px-4 py-2 rounded-full font-bold text-lg border-2 animate-wiggle`;
+  const baseClasses = `px-3 sm:px-4 py-2 rounded-full font-bold text-sm sm:text-base lg:text-lg border-2 animate-wiggle`;
   
   switch (status) {
     case 'complete':
@@ -124,33 +124,33 @@ const PhaseCard = ({ phase, index }: { phase: Phase; index: number }) => {
           : 'opacity-0 translate-y-12'
       }`}
     >
-      <Card className="card-fun p-8 mb-6 backdrop-blur-sm">
-        <div className="flex items-start gap-6">
-          <div className="flex-shrink-0 mt-2">
+      <Card className="card-fun p-4 sm:p-6 lg:p-8 mb-4 sm:mb-6 backdrop-blur-sm">
+        <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+          <div className="flex-shrink-0 sm:mt-2">
             <StatusIcon status={phase.status} />
           </div>
-          <div className="flex-1 space-y-6">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between flex-wrap gap-3">
-                <h3 className={`text-2xl font-bold font-comic text-${phase.color} drop-shadow-lg`}>
+          <div className="flex-1 space-y-4 sm:space-y-6">
+            <div className="space-y-2 sm:space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3">
+                <h3 className={`text-lg sm:text-xl lg:text-2xl font-bold font-comic text-${phase.color} drop-shadow-lg`}>
                   {phase.title}
                 </h3>
                 <StatusBadge status={phase.status} progress={phase.progress} color={phase.color} />
               </div>
               {phase.date && (
-                <p className={`text-lg text-${phase.color} font-semibold font-casual bg-${phase.color}/10 px-3 py-1 rounded-full inline-block`}>
+                <p className={`text-sm sm:text-base lg:text-lg text-${phase.color} font-semibold font-casual bg-${phase.color}/10 px-2 sm:px-3 py-1 rounded-full inline-block`}>
                   📅 {phase.date}
                 </p>
               )}
             </div>
             
-            <p className="text-foreground leading-relaxed text-lg font-casual">
+            <p className="text-foreground leading-relaxed text-sm sm:text-base lg:text-lg font-casual">
               {phase.description}
             </p>
             
             {phase.progress && (
-              <div className="space-y-3">
-                <div className="flex justify-between text-lg">
+              <div className="space-y-2 sm:space-y-3">
+                <div className="flex justify-between text-sm sm:text-base lg:text-lg">
                   <span className="text-muted-foreground font-casual">🎯 Progress Vibes</span>
                   <span className={`text-${phase.color} font-bold animate-bounce-fun`}>
                     {phase.progress}% LETS GOOO! 🚀
@@ -159,7 +159,7 @@ const PhaseCard = ({ phase, index }: { phase: Phase; index: number }) => {
                 <div className="relative">
                   <Progress 
                     value={isVisible ? phase.progress : 0} 
-                    className="h-4 bg-secondary/50 rounded-full overflow-hidden"
+                    className="h-3 sm:h-4 bg-secondary/50 rounded-full overflow-hidden"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-fun-pink via-fun-blue to-fun-purple opacity-30 rounded-full animate-rainbow"></div>
                 </div>
@@ -194,13 +194,13 @@ export const RoadmapSection = () => {
   }, []);
 
   return (
-    <section className="min-h-screen py-12 px-4 relative overflow-hidden">
-      {/* Fun floating shapes background with glow */}
+    <section className="min-h-screen py-8 sm:py-12 px-4 relative overflow-hidden">
+      {/* Fun floating shapes background with glow - hidden on mobile for performance */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(15)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <div
             key={i}
-            className={`absolute w-8 h-8 bg-fun-${['pink', 'blue', 'green', 'orange', 'purple'][i % 5]}/30 blob-shape shadow-lg`}
+            className={`absolute w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 bg-fun-${['pink', 'blue', 'green', 'orange', 'purple'][i % 5]}/30 blob-shape shadow-lg hidden sm:block`}
             style={{
               filter: `drop-shadow(0 0 10px hsl(var(--fun-${['pink', 'blue', 'green', 'orange', 'purple'][i % 5]}) / 0.4))`,
               left: `${Math.random() * 100}%`,
@@ -212,33 +212,33 @@ export const RoadmapSection = () => {
         ))}
       </div>
 
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Header Section */}
         <div 
           ref={heroRef}
-          className={`text-center mb-16 transition-all duration-1000 ${
+          className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${
             heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <h1 className="text-6xl md:text-8xl font-bold font-comic text-gradient mb-8 tracking-tight animate-bounce-fun drop-shadow-2xl">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-8xl font-bold font-comic text-gradient mb-6 sm:mb-8 tracking-tight animate-bounce-fun drop-shadow-2xl">
             THE ORIGINAL WIF HAT
           </h1>
           <div className="relative inline-block">
-            <h2 className="text-4xl md:text-5xl font-bold font-casual mb-6 text-fun-purple animate-wiggle">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold font-casual mb-4 sm:mb-6 text-fun-purple animate-wiggle">
               🗺️ ROADMAP OF DREAMS 🗺️
             </h2>
-            <div className="absolute -top-2 -right-2 text-3xl animate-spin">✨</div>
-            <div className="absolute -bottom-2 -left-2 text-3xl animate-bounce">🚀</div>
+            <div className="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 text-xl sm:text-2xl lg:text-3xl animate-spin">✨</div>
+            <div className="absolute -bottom-1 sm:-bottom-2 -left-1 sm:-left-2 text-xl sm:text-2xl lg:text-3xl animate-bounce">🚀</div>
           </div>
-          <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto font-casual leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-3xl mx-auto font-casual leading-relaxed px-4">
             A symbol of enduring legacy & memetic history! 🎭<br/>
-            <span className="text-fun-pink font-bold text-2xl">
+            <span className="text-fun-pink font-bold text-lg sm:text-xl lg:text-2xl">
               We're not just hodling - we're DIAMOND HANDING the culture! 💎🙌✨
             </span>
           </p>
           
           {/* Dog and Hat Images */}
-          <div className="relative w-96 h-96 mx-auto mb-16">
+          <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mx-auto mb-12 sm:mb-16">
             <div className="absolute inset-0 bg-gradient-to-r from-fun-pink via-fun-blue to-fun-purple rounded-full animate-rainbow p-1 shadow-2xl">
               <div className="w-full h-full bg-background rounded-full shadow-inner"></div>
             </div>
@@ -250,37 +250,37 @@ export const RoadmapSection = () => {
             <img 
               src={hatImage} 
               alt="Original Wif Hat - The Crown of Memes" 
-              className="absolute -top-20 left-1/2 transform -translate-x-1/2 w-40 h-40 object-contain animate-bounce-fun z-20 hover:animate-spin transition-all duration-300 cursor-pointer drop-shadow-xl"
+              className="absolute -top-12 sm:-top-16 lg:-top-20 left-1/2 transform -translate-x-1/2 w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 object-contain animate-bounce-fun z-20 hover:animate-spin transition-all duration-300 cursor-pointer drop-shadow-xl"
             />
-            <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-6xl animate-bounce drop-shadow-lg">
+            <div className="absolute -bottom-6 sm:-bottom-8 left-1/2 transform -translate-x-1/2 text-3xl sm:text-4xl lg:text-6xl animate-bounce drop-shadow-lg">
               👑
             </div>
           </div>
         </div>
 
         {/* Timeline */}
-        <div className="space-y-6 mb-20">
+        <div className="space-y-4 sm:space-y-6 mb-16 sm:mb-20">
           {phases.map((phase, index) => (
             <PhaseCard key={phase.id} phase={phase} index={index} />
           ))}
         </div>
 
         {/* Disclaimer */}
-        <Card className="card-fun p-8 text-center border-4 border-fun-pink/50 backdrop-blur-sm shadow-2xl">
-          <div className="space-y-4">
-            <div className="text-3xl font-bold font-comic text-fun-blue animate-wiggle">
+        <Card className="card-fun p-4 sm:p-6 lg:p-8 text-center border-4 border-fun-pink/50 backdrop-blur-sm shadow-2xl">
+          <div className="space-y-3 sm:space-y-4">
+            <div className="text-xl sm:text-2xl lg:text-3xl font-bold font-comic text-fun-blue animate-wiggle">
               🚨 THE REAL DEAL ALERT 🚨
             </div>
-            <p className="text-lg text-foreground leading-relaxed font-casual">
-              <span className="text-fun-pink font-bold text-2xl block mb-2">
+            <p className="text-sm sm:text-base lg:text-lg text-foreground leading-relaxed font-casual">
+              <span className="text-fun-pink font-bold text-lg sm:text-xl lg:text-2xl block mb-2">
                 🎩 THE ORIGINAL WIF HAT CAME 1ST! 🎩
               </span>
               We're the OG Symbol of Enduring Legacy! While others auction their hats, 
               we HODL the True Legacy of dogwifhat memetics like absolute LEGENDS! 🏆💎<br/>
-              <span className="text-destructive font-bold animate-bounce-fun text-xl block mt-4">
+              <span className="text-destructive font-bold animate-bounce-fun text-base sm:text-lg lg:text-xl block mt-3 sm:mt-4">
                 ⚠️ NFA - NOT FINANCIAL ADVICE ⚠️
               </span>
-              <span className="text-muted-foreground">
+              <span className="text-muted-foreground text-sm sm:text-base">
                 Crypto memecoins = high risk, high vibes! DYOR before you send it to the moon! 🚀📈🌙
               </span>
             </p>

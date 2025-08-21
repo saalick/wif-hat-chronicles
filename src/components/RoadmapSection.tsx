@@ -195,13 +195,14 @@ export const RoadmapSection = () => {
 
   return (
     <section className="min-h-screen py-12 px-4 relative overflow-hidden">
-      {/* Fun floating shapes background */}
+      {/* Fun floating shapes background with glow */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(15)].map((_, i) => (
           <div
             key={i}
-            className={`absolute w-8 h-8 bg-fun-${['pink', 'blue', 'green', 'orange', 'purple'][i % 5]}/20 blob-shape`}
+            className={`absolute w-8 h-8 bg-fun-${['pink', 'blue', 'green', 'orange', 'purple'][i % 5]}/30 blob-shape shadow-lg`}
             style={{
+              filter: `drop-shadow(0 0 10px hsl(var(--fun-${['pink', 'blue', 'green', 'orange', 'purple'][i % 5]}) / 0.4))`,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 8}s`,
@@ -238,20 +239,20 @@ export const RoadmapSection = () => {
           
           {/* Dog and Hat Images */}
           <div className="relative w-96 h-96 mx-auto mb-16">
-            <div className="absolute inset-0 bg-gradient-to-r from-fun-pink via-fun-blue to-fun-purple rounded-full animate-rainbow p-1">
-              <div className="w-full h-full bg-background rounded-full"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-fun-pink via-fun-blue to-fun-purple rounded-full animate-rainbow p-1 shadow-2xl">
+              <div className="w-full h-full bg-background rounded-full shadow-inner"></div>
             </div>
             <img 
               src={dogImage} 
               alt="Original Wif Dog - The Legendary Good Boy" 
-              className="w-full h-full object-contain relative z-10 hover:scale-110 transition-transform duration-500 cursor-pointer"
+              className="w-full h-full object-contain relative z-10 hover:scale-110 transition-transform duration-500 cursor-pointer drop-shadow-2xl"
             />
             <img 
               src={hatImage} 
               alt="Original Wif Hat - The Crown of Memes" 
-              className="absolute -top-20 left-1/2 transform -translate-x-1/2 w-40 h-40 object-contain animate-bounce-fun z-20 hover:animate-spin transition-all duration-300 cursor-pointer"
+              className="absolute -top-20 left-1/2 transform -translate-x-1/2 w-40 h-40 object-contain animate-bounce-fun z-20 hover:animate-spin transition-all duration-300 cursor-pointer drop-shadow-xl"
             />
-            <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-6xl animate-bounce">
+            <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-6xl animate-bounce drop-shadow-lg">
               👑
             </div>
           </div>
@@ -265,7 +266,7 @@ export const RoadmapSection = () => {
         </div>
 
         {/* Disclaimer */}
-        <Card className="card-fun p-8 text-center border-4 border-fun-pink/40 backdrop-blur-sm">
+        <Card className="card-fun p-8 text-center border-4 border-fun-pink/50 backdrop-blur-sm shadow-2xl">
           <div className="space-y-4">
             <div className="text-3xl font-bold font-comic text-fun-blue animate-wiggle">
               🚨 THE REAL DEAL ALERT 🚨

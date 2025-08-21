@@ -8,50 +8,51 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Creative casual theme with fun colors */
-    --background: 248 100% 97%;
-    --foreground: 339 20% 20%;
+    /* Creative casual dark theme with fun colors */
+    --background: 230 15% 9%;
+    --foreground: 0 0% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 339 20% 20%;
+    --card: 225 15% 12%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 339 20% 20%;
+    --popover: 225 15% 12%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 280 100% 70%;
+    --primary: 280 100% 75%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 45 100% 80%;
-    --secondary-foreground: 339 20% 20%;
+    --secondary: 225 15% 15%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 210 40% 94%;
-    --muted-foreground: 339 20% 60%;
+    --muted: 225 15% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 160 100% 75%;
-    --accent-foreground: 339 20% 20%;
+    --accent: 160 80% 70%;
+    --accent-foreground: 230 15% 9%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 84% 65%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 280 100% 70%;
+    --border: 225 15% 18%;
+    --input: 225 15% 18%;
+    --ring: 280 100% 75%;
 
-    /* Fun creative colors */
-    --fun-pink: 330 100% 75%;
-    --fun-blue: 200 100% 70%;
-    --fun-green: 140 60% 70%;
-    --fun-orange: 25 100% 70%;
-    --fun-purple: 260 100% 75%;
+    /* Fun creative colors for dark theme */
+    --fun-pink: 330 85% 70%;
+    --fun-blue: 200 85% 70%;
+    --fun-green: 140 70% 65%;
+    --fun-orange: 25 90% 70%;
+    --fun-purple: 260 85% 75%;
     
-    /* Playful gradients */
-    --gradient-main: linear-gradient(135deg, hsl(280 100% 95%) 0%, hsl(200 100% 95%) 50%, hsl(45 100% 95%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100% / 0.9) 0%, hsl(280 50% 98% / 0.8) 100%);
+    /* Dark playful gradients */
+    --gradient-main: linear-gradient(135deg, hsl(230 20% 8%) 0%, hsl(240 25% 12%) 50%, hsl(220 20% 10%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(225 15% 12% / 0.95) 0%, hsl(240 20% 15% / 0.9) 100%);
     --gradient-fun: linear-gradient(45deg, hsl(var(--fun-pink)) 0%, hsl(var(--fun-blue)) 25%, hsl(var(--fun-green)) 50%, hsl(var(--fun-orange)) 75%, hsl(var(--fun-purple)) 100%);
     
-    /* Soft shadows */
-    --shadow-soft: 0 10px 25px hsl(280 100% 70% / 0.1);
-    --shadow-fun: 0 5px 15px hsl(var(--fun-pink) / 0.2);
+    /* Glowing shadows for dark theme */
+    --shadow-soft: 0 10px 25px hsl(230 15% 5% / 0.3);
+    --shadow-fun: 0 8px 20px hsl(var(--fun-pink) / 0.25);
+    --shadow-glow: 0 0 30px hsl(var(--fun-purple) / 0.3);
 
     --radius: 1.5rem;
 
@@ -73,9 +74,9 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Same light theme for consistency */
-    --background: 248 100% 97%;
-    --foreground: 339 20% 20%;
+    /* Same dark theme for consistency */
+    --background: 230 15% 9%;
+    --foreground: 0 0% 95%;
   }
 }
 
@@ -106,15 +107,16 @@ All colors MUST be HSL.
   
   .card-fun {
     background: var(--gradient-card);
-    box-shadow: var(--shadow-soft);
-    border: 2px solid hsl(var(--fun-pink) / 0.2);
+    box-shadow: var(--shadow-soft), 0 0 20px hsl(var(--fun-pink) / 0.1);
+    border: 2px solid hsl(var(--fun-pink) / 0.3);
     transform: rotate(-1deg);
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
   }
 
   .card-fun:hover {
     transform: rotate(0deg) scale(1.02);
-    box-shadow: 0 15px 35px hsl(var(--fun-purple) / 0.15);
+    box-shadow: var(--shadow-glow), 0 20px 40px hsl(var(--fun-purple) / 0.2);
   }
 
   .card-fun:nth-child(even) {

@@ -1,13 +1,13 @@
-import { RoadmapSection } from '@/components/RoadmapSection';
+import { RoadmapSectionChinese } from '@/components/RoadmapSectionChinese';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
-const Index = () => {
+const Chinese = () => {
   return (
     <div className="min-h-screen relative">
       <LanguageSwitcher />
-      <RoadmapSection />
+      <RoadmapSectionChinese />
     </div>
   );
 };
 
-export default Index;
+export default Chinese;
